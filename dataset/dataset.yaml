@@ -1,0 +1,10 @@
+
+path: C:\Users\klanz\Desktop\MAGISTERKA\dataset
+
+train: train/images
+val: val/images
+test: test/images
+
+names:
+    0: chicken
+    1: not_chicken
