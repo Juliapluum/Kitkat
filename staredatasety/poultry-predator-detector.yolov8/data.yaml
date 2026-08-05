@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 3
+names: ['coyote', 'fox', 'raptor']
+
+roboflow:
+  workspace: jz303062-student-polsl-pl
+  project: poultry-predator-detector-a99w8
+  version: dataset
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/jz303062-student-polsl-pl/poultry-predator-detector-a99w8/dataset/dataset
