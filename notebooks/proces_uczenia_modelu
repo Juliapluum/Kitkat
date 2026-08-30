@@ -1,0 +1,78 @@
+digraph proces_uczenia_modelu {
+	bgcolor=white fontname=Arial nodesep=0.45 pad=0.3 rankdir=TB ranksep=0.6
+	node [fontname=Arial fontsize=12 margin="0.15,0.10" shape=box style=rounded]
+	edge [fontname=Arial fontsize=10]
+	data [label="Zbiór danych obrazowych"]
+	split [label="Podział danych"]
+	train [label="Zbiór treningowy"]
+	val [label="Zbiór walidacyjny"]
+	test [label="Zbiór testowy"]
+	data -> split
+	split -> train
+	split -> val
+	split -> test
+	preprocessing_train [label="Wstępne przetwarzanie
+• zmiana rozmiaru obrazu
+• normalizacja
+• przygotowanie danych"]
+	augmentation [label="Augmentacja danych
+• odbicie
+• zmiana jasności i kontrastu
+• rozmycie
+• częściowe zasłonięcie
+• symulacja warunków rzeczywistych"]
+	train -> preprocessing_train
+	preprocessing_train -> augmentation
+	preprocessing_val [label="Wstępne przetwarzanie
+zbioru walidacyjnego"]
+	preprocessing_test [label="Wstępne przetwarzanie
+zbioru testowego"]
+	val -> preprocessing_val
+	test -> preprocessing_test
+	pretrained [label="Model wstępnie wytrenowany
+(uczenie transferowe)"]
+	model [label="Dostrajanie modelu
+(fine-tuning)"]
+	pretrained -> model
+	augmentation -> model
+	batch [label="Partia danych
+(batch)"]
+	prediction [label="Predykcja modelu"]
+	loss [label="Obliczenie funkcji straty
+(loss function)"]
+	gradient [label="Wyznaczenie gradientu"]
+	optimizer [label="Aktualizacja parametrów
+przez optymalizator"]
+	model -> batch
+	batch -> prediction
+	prediction -> loss
+	loss -> gradient
+	gradient -> optimizer
+	optimizer -> batch [label="kolejna iteracja"]
+	epoch [label="Zakończenie epoki"]
+	validation [label="Ocena na zbiorze walidacyjnym
+• strata walidacyjna
+• jakość predykcji"]
+	repeat [label="Kolejna epoka?"]
+	optimizer -> epoch
+	epoch -> validation
+	preprocessing_val -> validation
+	validation -> repeat
+	repeat -> batch [label=TAK]
+	repeat -> best_model [label=NIE]
+	best_model [label="Wybór najlepszego modelu
+na podstawie walidacji"]
+	test_model [label="Ocena końcowa
+na zbiorze testowym"]
+	best_model -> test_model
+	preprocessing_test -> test_model
+	metrics [label="Metryki jakości modelu
+• Precision
+• Recall
+• F1-score
+• mAP50
+• czas inferencji"]
+	analysis [label="Analiza wyników i błędów"]
+	test_model -> metrics
+	metrics -> analysis
+}

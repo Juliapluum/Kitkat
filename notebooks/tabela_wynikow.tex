@@ -1,0 +1,17 @@
+\setlength{\tabcolsep}{12pt}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+ & Accuracy & Precision & Recall & F1 & TP & FP & TN & FN & Time \\
+\midrule
+YOLO normal & 0.99 & 1.00 & 0.98 & 0.99 & 479 & 2 & 389 & 8 & 22.03 \\
+YOLO + CNN normal & 0.98 & 1.00 & 0.98 & 0.99 & 475 & 2 & 389 & 12 & 30.59 \\
+YOLO dark & 0.98 & 0.99 & 0.98 & 0.98 & 478 & 6 & 385 & 9 & 17.07 \\
+YOLO + CNN dark & 0.97 & 0.96 & 0.98 & 0.97 & 479 & 19 & 372 & 8 & 27.49 \\
+YOLO night & 0.97 & 0.98 & 0.95 & 0.97 & 465 & 8 & 383 & 22 & 16.75 \\
+YOLO + CNN night & 0.92 & 0.91 & 0.96 & 0.93 & 466 & 47 & 344 & 21 & 26.55 \\
+YOLO occlusion & 0.96 & 0.99 & 0.93 & 0.96 & 455 & 4 & 387 & 32 & 16.64 \\
+YOLO + CNN occlusion & 0.94 & 0.98 & 0.91 & 0.95 & 445 & 9 & 382 & 42 & 26.60 \\
+YOLO motion & 0.82 & 0.92 & 0.74 & 0.82 & 358 & 30 & 361 & 129 & 16.30 \\
+YOLO + CNN motion & 0.73 & 0.98 & 0.53 & 0.69 & 257 & 4 & 387 & 230 & 23.08 \\
+\bottomrule
+\end{tabular}
